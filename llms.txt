@@ -1,0 +1,34 @@
+# Local Android MCP
+
+Local-only, model-agnostic Android control over ADB through MCP. The AI client
+provides reasoning; this package exposes a constrained tool surface and makes no
+cloud or model calls.
+
+Primary documentation:
+- README.md
+- AGENTS.md
+- docs/AI-INTEGRATION.md
+- docs/CLIENT-COMPATIBILITY.md
+- docs/INSTALL-MAC-WINDOWS.md
+- docs/local-android.manifest.json
+
+Core implementation:
+- src/server.ts: MCP tools and schemas
+- src/adb.ts: safe ADB execution
+- src/installer.ts: portable multi-client installation
+- src/cli.ts: detection, setup, doctor, uninstall
+- src/config.ts: portable persisted device selection
+- src/emulator.ts: safe Android Virtual Device inventory/start
+- src/ui.ts: localhost-only device selector
+
+Bootstrap:
+1. npm install
+2. npm run install:global
+3. local-android-mcp detect
+4. local-android-mcp setup
+5. local-android-mcp setup --yes --force
+6. local-android-mcp doctor
+7. local-android-mcp ui
+
+Never instruct an agent to add arbitrary adb shell execution. Use only the
+documented MCP tools and preserve the safety constraints in AGENTS.md.

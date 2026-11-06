@@ -1,0 +1,64 @@
+{
+  "format": "local-android-integration-manifest",
+  "schemaVersion": 1,
+  "name": "local-android",
+  "version": "0.3.1",
+  "description": "Local, model-agnostic Android control over ADB through MCP",
+  "transport": {
+    "type": "stdio",
+    "command": "local-android-mcp",
+    "args": []
+  },
+  "requirements": {
+    "node": ">=20",
+    "executables": ["adb"],
+    "device": "Authorized Android USB or wireless ADB device"
+  },
+  "setup": {
+    "install": ["npm install", "npm run install:global"],
+    "detect": "local-android-mcp detect --json",
+    "plan": "local-android-mcp setup --dry-run",
+    "apply": "local-android-mcp setup --yes --force",
+    "verify": "local-android-mcp doctor --json",
+    "deviceSelector": "local-android-mcp ui"
+  },
+  "environment": [
+    "ANDROID_ADB_PATH",
+    "ADB_PATH",
+    "ANDROID_SDK_ROOT",
+    "ANDROID_HOME",
+    "ANDROID_SERIAL",
+    "ANDROID_EMULATOR_PATH",
+    "EMULATOR_PATH",
+    "LOCAL_ANDROID_CONFIG_HOME",
+    "COPILOT_HOME",
+    "CODEX_HOME",
+    "CLAUDE_CONFIG_DIR",
+    "XDG_CONFIG_HOME"
+  ],
+  "tools": {
+    "readOnly": [
+      "android_list_devices",
+      "android_device_info",
+      "android_screenshot",
+      "android_get_ui_tree",
+      "android_list_packages"
+    ],
+    "deviceChanging": [
+      "android_tap",
+      "android_swipe",
+      "android_type_text",
+      "android_press_key",
+      "android_launch_app",
+      "android_force_stop_app"
+    ]
+  },
+  "documentation": [
+    "README.md",
+    "AGENTS.md",
+    "llms.txt",
+    "docs/AI-INTEGRATION.md",
+    "docs/CLIENT-COMPATIBILITY.md",
+    "docs/INSTALL-MAC-WINDOWS.md"
+  ]
+}

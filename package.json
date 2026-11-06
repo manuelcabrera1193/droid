@@ -1,0 +1,53 @@
+{
+  "name": "local-android-mcp",
+  "version": "0.3.1",
+  "private": true,
+  "description": "Portable, model-agnostic MCP server for safe local Android control over ADB",
+  "type": "module",
+  "bin": {
+    "local-android-mcp": "dist/src/index.js"
+  },
+  "files": [
+    "dist/src",
+    ".mcp.json",
+    "AGENTS.md",
+    "llms.txt",
+    "docs",
+    "examples",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "detect:clients": "npm run --silent build && node dist/src/index.js detect",
+    "install:global": "node scripts/install-global.mjs",
+    "mcp": "npm run --silent build && node dist/src/index.js",
+    "prepack": "npm run build",
+    "smoke": "node scripts/smoke.mjs",
+    "smoke:device": "node scripts/device-smoke.mjs",
+    "setup:clients": "npm run --silent build && node dist/src/index.js setup",
+    "test": "npm run build && node scripts/test.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.32.2",
+    "jsonc-parser": "^3.3.1",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "typescript": "7.0.2"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manuelcabrera1193/droid.git"
+  },
+  "bugs": {
+    "url": "https://github.com/manuelcabrera1193/droid/issues"
+  },
+  "homepage": "https://github.com/manuelcabrera1193/droid#readme"
+}

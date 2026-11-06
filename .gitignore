@@ -1,0 +1,40 @@
+node_modules/
+dist/
+*.tgz
+.DS_Store
+*.log
+.env
+.env.*
+
+# Local credentials and signing material
+*.pem
+*.key
+*.keystore
+*.jks
+*.p12
+*.pfx
+adbkey
+adbkey.pub
+token.json
+credentials.json
+client_secret*.json
+google-services.json
+
+# Device captures, private designs and generated artifacts
+captures/
+screenshots/
+snapshots/
+evidence/
+artifacts/
+coverage/
+.codebase-memory/
+*.apk
+*.aab
+*.hprof
+*.trace
+*.bak
+*.backup
+
+# Local editor settings
+.idea/
+.vscode/
